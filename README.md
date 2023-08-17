@@ -1,2 +1,2 @@
-# Inteligentna_Stacja_Pogodowa
- 
+# Inteligentna Stacja Pogodowa
+By Piotersky 2023
