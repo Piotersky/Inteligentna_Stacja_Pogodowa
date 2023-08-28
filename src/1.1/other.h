@@ -1,15 +1,20 @@
 // Smart WiFi weather station source code
-// Version: Production (Public)
+// Version: 1.1 Production (Public)
 // File: other.h
-// Version: 1.1
 // Author: Piotersky
+// 
+// This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. 
+// To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+//
+// Gaj Electronics 2023
 
-// This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
-// To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ 
-// or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
-
-// By Piotersky 2023
-
+#if defined(__AVR__)
+    #include <avr/pgmspace.h>
+#elif defined(__PIC32MX__)
+    #define PROGMEM
+#elif defined(__arm__)
+    #define PROGMEM
+#endif
 
 // Image Size     : 20x40 pixels
 // Memory usage   : 1600 bytes
