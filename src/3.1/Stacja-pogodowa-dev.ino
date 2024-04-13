@@ -16,7 +16,7 @@ short timezone = 2;
 short invertColours = -1;
 
 const String type = "1";
-const String firmwareVersion = "3.1";
+const String firmwareVersion = "3.0";
 
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -27,8 +27,8 @@ const String firmwareVersion = "3.1";
 #include <TFT_eSPI.h>
 #include "other.h"
 #include <EEPROM.h>
-#include <HTTPUpdate.h>
-#include "cert.h"
+#include <ESP32httpUpdate.h>
+// #include "cert.h"
 
 TFT_eSPI tft = TFT_eSPI();
 #define TFT_LED 5
@@ -186,12 +186,14 @@ void getApi() {
 }
 
 void updateFirmware(String ver) {
-  WiFiClientSecure client;
-  client.setCACert(rootCACertificate);
-  t_httpUpdate_return ret = httpUpdate.update(client, newestFirmwareLink + ver + "/test.ino.bin");
+  // WiFiClientSecure client;
+  // client.setCACert(rootCACertificate);
+  // Serial.println(newestFirmwareLink + ver + "/test.ino.bin");
+  // t_httpUpdate_return ret = httpUpdate.update(client, newestFirmwareLink + ver + "/test.ino.bin");
+  t_httpUpdate_return ret = ESPhttpUpdate.update(newestFirmwareLink + ver + "/test.ino.bin");
   switch (ret) {
     case HTTP_UPDATE_FAILED:
-      Serial.printf("HTTP_UPDATE_FAILD Error (%d): %s\n", httpUpdate.getLastError(), httpUpdate.getLastErrorString().c_str());
+      Serial.printf("HTTP_UPDATE_FAILD Error (%d): %s\n", ESPhttpUpdate.getLastError(), ESPhttpUpdate.getLastErrorString().c_str());
       error("UPD_ERR");
       break;
 
