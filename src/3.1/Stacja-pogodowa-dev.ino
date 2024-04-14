@@ -16,7 +16,7 @@ short timezone = 2;
 short invertColours = -1;
 
 const String type = "1";
-const String firmwareVersion = "3.0";
+const String firmwareVersion = "3.1";
 
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -28,7 +28,6 @@ const String firmwareVersion = "3.0";
 #include "other.h"
 #include <EEPROM.h>
 #include <ESP32httpUpdate.h>
-// #include "cert.h"
 
 TFT_eSPI tft = TFT_eSPI();
 #define TFT_LED 5
@@ -186,10 +185,6 @@ void getApi() {
 }
 
 void updateFirmware(String ver) {
-  // WiFiClientSecure client;
-  // client.setCACert(rootCACertificate);
-  // Serial.println(newestFirmwareLink + ver + "/test.ino.bin");
-  // t_httpUpdate_return ret = httpUpdate.update(client, newestFirmwareLink + ver + "/test.ino.bin");
   t_httpUpdate_return ret = ESPhttpUpdate.update(newestFirmwareLink + ver + "/test.ino.bin");
   switch (ret) {
     case HTTP_UPDATE_FAILED:
