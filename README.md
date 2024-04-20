@@ -1,6 +1,5 @@
 # Inteligentna Stacja Pogodowa
-Gaj Electronics 2023
-
+Gaj Electronics 2024
 [![CC BY 4.0][by-nc-nd-image]][by-nc-nd]
 
 This work is licensed under a
